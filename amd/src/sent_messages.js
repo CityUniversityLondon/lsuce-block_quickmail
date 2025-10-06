@@ -14,12 +14,11 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package    block_quickmail
+ * @package
  * @copyright  2008 onwards Louisiana State University
  * @copyright  2008 onwards Chad Mazilly, Robert Russo, Jason Peak, Dave Elliott, Adam Zapletal, Philip Cali, David Lowe
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 
 
 define([
@@ -38,7 +37,7 @@ define([
             // 'path': 'classes/external/',
             'class': 'sent_messages_ctrl'
         // eslint-disable-next-line promise/always-return
-        })).then(function (response) {
+        })).then(function(response) {
             noti.storeMsg(response);
             /* TODO: To reduce server calls via page reload this could remove table
              rows but needs to factor the pagination results.
@@ -49,7 +48,7 @@ define([
              But instead, let's just reload the page
             */
             location.reload();
-        }).catch ();
+        }).catch();
     };
 
     return {
@@ -58,7 +57,7 @@ define([
             noti.showMsg();
 
             // Single Click Delete (Trash Icon).
-            $('.qm_sent_msgs').on('click', '.qm_sm_trash', function (ev) {
+            $('.qm_sent_msgs').on('click', '.qm_sm_trash', function(ev) {
                 ev.preventDefault();
                 removeSentItems([$(this).data("msgid")]);
             });
@@ -75,13 +74,13 @@ define([
             });
 
             // Select ALL Checkboxes.
-            $("#qm_sm_select_all").click(function () {
+            $("#qm_sm_select_all").click(function() {
                 $("#qm_sm_selected_remove").toggle(this.checked);
                 $('input:checkbox').prop('checked', this.checked);
             });
 
             // Remove Selected Button Click.
-            $('.qm_sent_msgs').on('click', '#qm_sm_selected_remove', function (ev) {
+            $('.qm_sent_msgs').on('click', '#qm_sm_selected_remove', function(ev) {
                 ev.preventDefault();
                 let remove_list = [];
                 $(".qm_sm_cb:checkbox:checked").each(function() {
